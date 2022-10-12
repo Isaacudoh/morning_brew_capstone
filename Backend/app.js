@@ -9,6 +9,8 @@ const app = express();
 //   res.send("Hello, Nsikak!");
 // });
 
+app.use(express.json());
+
 // Router import
 app.use("/users", router);
 
