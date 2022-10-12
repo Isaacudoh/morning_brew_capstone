@@ -1,5 +1,5 @@
 import User from "../models/User";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
 
 export const getAllUsers = async (req, res) => {
   let users;
@@ -30,7 +30,6 @@ export const signup = async (req, res) => {
 
   const hashedPassword = bcrypt.hashSync(password);
 
-
   const user = new User({
     name,
     email,
@@ -45,7 +44,7 @@ export const signup = async (req, res) => {
   return res.status(201).json({ user });
 };
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
   const { email, password } = req.body;
   let existingUser;
   try {
@@ -54,8 +53,14 @@ const login = async (req, res) => {
     return console.log(err);
   }
   if (!existingUser) {
-    return res
-      .status(404)
-      .json({ message: "User Email Does not Exist" });
+    return res.status(404).json({ message: "User Email Does not Exist" });
   }
+
+  const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password);
+  if (!isPasswordCorrect) {
+    return res.status(400).json({ message: "Password does not match" });
+  }
+  return res
+    .status(200)
+    .json({ message: "Password is correct, Login successful!" });
 };
