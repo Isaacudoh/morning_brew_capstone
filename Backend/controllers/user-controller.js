@@ -1,5 +1,5 @@
 import User from "../models/User";
-import bcrypt from bcryptjs
+import bcrypt from "bcryptjs"
 
 export const getAllUsers = async (req, res) => {
   let users;
@@ -27,10 +27,14 @@ export const signup = async (req, res) => {
       .status(400)
       .json({ message: "User already exists. Please login" });
   }
+
+  const hashedPassword = bcrypt.hashSync(password);
+
+
   const user = new User({
     name,
     email,
-    password,
+    password: hashedPassword,
   });
 
   try {
