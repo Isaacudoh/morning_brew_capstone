@@ -22,5 +22,4 @@ const userSchema = new Schema({
 });
 
 // export to MongoDB stored as users
-
 export default mongoose.model("User", userSchema);
