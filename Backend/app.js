@@ -9,8 +9,8 @@ const app = express();
 //   res.send("Hello, Nsikak!");
 // });
 
-app.use("/users",router);
-
+// Router import
+app.use("/users", router);
 
 // Database conection
 mongoose
