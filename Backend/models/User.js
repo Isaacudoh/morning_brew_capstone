@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-constuserSchema = new Schema({
-
+const userSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -23,4 +22,5 @@ constuserSchema = new Schema({
 });
 
 // export to MongoDB stored as users
-export default mongoose.model('User', Schema);
+
+export default mongoose.model("User", userSchema);

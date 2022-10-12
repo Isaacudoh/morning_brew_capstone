@@ -1,12 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
+import router from "./routes/user-routes";
 
 const app = express();
 
 // Index Route
-app.use("/", (req, res) => {
-  res.send("Hello, Nsikak!");
-});
+// app.use("/", (req, res) => {
+//   res.send("Hello, Nsikak!");
+// });
+
+app.use("/users",router);
+
 
 // Database conection
 mongoose
@@ -20,5 +24,3 @@ mongoose
     )
   )
   .catch((err) => console.log(err));
-
-  
