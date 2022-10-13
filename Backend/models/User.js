@@ -19,6 +19,7 @@ const userSchema = new Schema({
     required: true,
     minLength: 8,
   },
+  blogs:[{type: mongoose.Types.ObjectId, ref: "Blog", required: true}]
 });
 
 // export to MongoDB stored as users
