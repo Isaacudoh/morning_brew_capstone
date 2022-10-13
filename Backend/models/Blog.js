@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const blogSchema = new Schema({
-    
   title: {
     type: "string",
     required: true,
@@ -15,7 +14,8 @@ const blogSchema = new Schema({
   },
 
   user: {
-    type: "string",
+    type: mongoose.Types.ObjectId,
+    ref: "User",
     required: true,
   },
 });
