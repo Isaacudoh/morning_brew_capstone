@@ -18,11 +18,27 @@ export const getAllBlogs = async (req, res) => {
 // Adding a blog
 export const addBlog = async (req, res) => {
   const { title, description, image, user } = req.body;
+
+  let existingUser;
+  try {
+    existingUser = await user.findById({ user });
+  } catch (error) {
+    return console.log(err);
+  }
+  if (!existingUser) {
+    return res.status(400).json({ message: "Unablle to find user by this ID" });
+  }
   const blog = new Blog({ title, description, image, user });
   try {
-    await blog.save();
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    await blog.save({ session });
+    existingUser.blogs.push(blog);
+    await existingUser.save({ session });
+    await session.commitTransaction();
   } catch (err) {
-    return console.log(err);
+    console.log(err);
+    return res.status(500).json({ message: err.message });
   }
   return res.status(200).json({ blog });
 };
