@@ -46,16 +46,32 @@ export const editBlog = async (req, res) => {
   return res.status(200).json({ blog });
 };
 
+// Getting a blog by its id
 export const getById = async (req, res) => {
   const id = req.params.id;
   let blog;
   try {
     blog = await Blog.findById(id);
-  }catch (err) {
-    return console.log (err);
+  } catch (err) {
+    return console.log(err);
   }
   if (!blog) {
-    return res.status(404).json({ message: 'No blog found' });
+    return res.status(404).json({ message: "No blog found" });
   }
-  return res.status (200).json({ blog });
-}
+  return res.status(200).json({ blog });
+};
+
+// Delete a blog by its ID.
+export const deleteBlog = async (req, res) => {
+  const id = req.params.id;
+  let blog;
+  try {
+    blog = await Blog.findByIdAndRemove(id);
+  } catch (err) {
+    console.log(err);
+  }
+  if (!blog) {
+    return res.status(404).json({ message: "Unable to delete blog" });
+  }
+  return res.status(200).json({ message: "successfully deleted" });
+};
