@@ -56,6 +56,7 @@ export const login = async (req, res) => {
     return res.status(404).json({ message: "User Email Does not Exist" });
   }
 
+  // Password Authentication
   const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password);
   if (!isPasswordCorrect) {
     return res.status(400).json({ message: "Password does not match" });

@@ -15,7 +15,7 @@ app.use(express.json());
 // Users Router import
 app.use("/users", router);
 
-// Blog rounter
+// Blog router
 app.use("/blog", blogRouter);
 
 // Database conection
