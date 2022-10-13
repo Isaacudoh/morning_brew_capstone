@@ -1,9 +1,12 @@
 import React from 'react'
+import {AppBar} from "@mui/material"
 
 const Header = () => {
-  return (
-    <div>header</div>
-  )
+  return <AppBar>
+    <Toolbar>
+        
+    </Toolbar>
+  </AppBar>
 }
 
 export default Header
