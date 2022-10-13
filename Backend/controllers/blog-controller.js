@@ -93,3 +93,17 @@ export const deleteBlog = async (req, res) => {
   }
   return res.status(200).json({ message: "successfully deleted" });
 };
+
+export const getByUserId = async (req, res) => {
+  const userId = req.params.Id;
+  let userBlogs;
+  try {
+    userBlogs = await User.findById(userId).populate("blogs");
+  } catch (error) {
+    return console.log(error);
+  }
+  if(!userBlogs) {
+    return res.status(404).json({message: "No blog found"});
+  }
+  return res.status(200).json({blogs: userBlogs});
+};

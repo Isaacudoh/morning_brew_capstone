@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getById,
+  getByUserId,
   addBlog,
   editBlog,
   getAllBlogs,
@@ -14,5 +15,6 @@ blogRouter.post("/add", addBlog);
 blogRouter.put("/edit/:id", editBlog);
 blogRouter.get("/:id", getById);
 blogRouter.delete("/:id", deleteBlog);
+blogRouter.get("/user/:id", getByUserId);
 
 export default blogRouter;
