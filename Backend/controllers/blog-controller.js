@@ -1,5 +1,7 @@
+import { response } from "express";
 import Blog from "../models/Blog";
 
+// Getting all blog posts
 export const getAllBlogs = async (req, res) => {
   let blogs;
   try {
@@ -13,6 +15,7 @@ export const getAllBlogs = async (req, res) => {
   return res.status(200).json({ blogs });
 };
 
+// Adding a blog
 export const addBlog = async (req, res) => {
   const { title, description, image, user } = req.body;
   const blog = new Blog({ title, description, image, user });
@@ -20,6 +23,25 @@ export const addBlog = async (req, res) => {
     await blog.save();
   } catch (err) {
     return console.log(err);
+  }
+  return res.status(200).json({ blog });
+};
+
+// Editing a blog
+export const editBlog = async (req, res) => {
+  const { title, description } = req.body;
+  const blogId = req.params.id;
+  let blog;
+  try {
+    blog = await Blog.findByIdAndUpdate(blogId, {
+      title: title,
+      description: description,
+    });
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!blog) {
+    return res.status(500).json({ message: "Unable to update blog" });
   }
   return res.status(200).json({ blog });
 };
