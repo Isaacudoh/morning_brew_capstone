@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Button, Tab, Tabs, Toolbar, AppBar, Typography, Box } from "@mui/material";
 
 const Header = () => {
+  const isLoggedin = useSelector((state) => state.isLoggedin);
   const [value, setValue] = useState();
   return (
     <AppBar position="sticky" sx={{ background: "Black" }}>
       <Toolbar>
         <Typography variant="h4">Morning ☕ Brew </Typography>
-        <Box display="flex" marginLeft={"auto"} marginRight="auto">
+        {isLoggedin && <Box display="flex" marginLeft={"auto"} marginRight="auto">
           <Tabs
             value={value}
             onChange={(e, val) => setValue(val)}
@@ -18,11 +20,11 @@ const Header = () => {
             <Tab label="New Articles" href="/AddBlogs"/>
           
           </Tabs>
-        </Box>
+        </Box>}
         <Box display="flex" marginLeft="auto">
-          <Button href="/auth">Login</Button>
-          <Button href="/auth">Signup</Button>
-          <Button href="/auth">Logout</Button>
+          {!isLoggedin && <Button href="/auth">Login</Button>}
+          {!isLoggedin && <Button href="/auth">Signup</Button>}
+          {isLoggedin && <Button href="/auth">Logout</Button>}
         </Box>
       </Toolbar>
     </AppBar>
