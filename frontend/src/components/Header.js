@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <AppBar position="sticky" sx={{ background: "Black" }}>
       <Toolbar>
-        <Typography variant="h4">Morning Br☕w </Typography>
+        <Typography variant="h4">Morning ☕ Brew </Typography>
         <Box display="flex" marginLeft={"auto"} marginRight="auto">
           <Tabs
             value={value}
@@ -21,8 +21,8 @@ const Header = () => {
         </Box>
         <Box display="flex" marginLeft="auto">
           <Button href="/auth">Login</Button>
-          <Button>Signup</Button>
-          <Button>Logout</Button>
+          <Button href="/auth">Signup</Button>
+          <Button href="/auth">Logout</Button>
         </Box>
       </Toolbar>
     </AppBar>
