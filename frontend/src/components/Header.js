@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Tab, Tabs, Toolbar, AppBar, Typography, Box } from "@mui/material";
+import { Button, Tab, Tabs, Toolbar, AppBar, Typography, Box } from "@mui/material";
 
 const Header = () => {
   const [value, setValue] = useState();
@@ -15,13 +15,14 @@ const Header = () => {
           >
             <Tab label="Articles" href="/blogs"/>
             <Tab label="My Articles" href="/myBlogs"/>
+            <Tab label="New Articles" href="/AddBlogs"/>
           
           </Tabs>
         </Box>
         <Box display="flex" marginLeft="auto">
-          <button LinkComponent={Link} to="/auth"> Login</button>
-          <button>Signup</button>
-          <button>Logout</button>
+          <Button href="/auth">Login</Button>
+          <Button>Signup</Button>
+          <Button>Logout</Button>
         </Box>
       </Toolbar>
     </AppBar>
