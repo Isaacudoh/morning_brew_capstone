@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, inputClasses, TextField, Typography } from "@mui/material";
+import axios from "axios";
 
 const Auth = () => {
   const [inputs, setInputs] = useState({
