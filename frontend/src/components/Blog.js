@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const blog = (props) => {
+const blog = (props, title, description, imageURL,userName) => {
   return (
     <div>
       <Card
@@ -23,20 +23,16 @@ const blog = (props) => {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: "blue" }} aria-label="recipe">
-              N
+              {props.userName}
             </Avatar>
           }
-          title={props.title}
-          subheader="September 14, 2016"
+          title={props.userName}
+          subheader="Posted few minutes ago"
         />
-        <CardMedia
-          component="img"
-          height="194"
-          image=""
-          alt="Paella dish"
-        />
+        <CardMedia component="img" height="194" image="{imageURl}" alt="blog image" />
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
+        {props.title}
+          <Typography paddingTop={2} variant="body2" color="text.secondary">
             {props.description}
           </Typography>
         </CardContent>

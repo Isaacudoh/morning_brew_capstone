@@ -28,7 +28,7 @@ const Header = () => {
             >
               <Tab label="Articles" href="/blogs" />
               <Tab label="My Articles" href="/myBlogs" />
-              <Tab label="New Articles" href="/AddBlogs" />
+              <Tab label="Add Articles" href="/blogs/add" />
             </Tabs>
           </Box>
         )}
