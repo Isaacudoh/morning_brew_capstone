@@ -8,38 +8,36 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const blog = () => {
+const blog = (props) => {
   return (
     <div>
       <Card
         sx={{
-          Width: "5%",
+          maxWidth: "40%",
           margin: "auto",
-          mt: 2,
+          mt: 10,
           padding: 2,
           boxshadow: "10px 10px 20px #ccc",
         }}
       >
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: "black" }} aria-label="recipe">
-              R
+            <Avatar sx={{ bgcolor: "blue" }} aria-label="recipe">
+              N
             </Avatar>
           }
-          title="Shrimp and Chorizo Paella"
+          title={props.title}
           subheader="September 14, 2016"
         />
         <CardMedia
           component="img"
           height="194"
-          image="/static/images/cards/paella.jpg"
+          image=""
           alt="Paella dish"
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            {props.description}
           </Typography>
         </CardContent>
       </Card>

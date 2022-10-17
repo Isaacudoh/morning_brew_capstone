@@ -17,7 +17,10 @@ const Blogs = () => {
   console.log(blogs);
   return (
     <div>
-      <Blog />
+      {blogs &&
+        blogs.map((blog, index) => (
+          <Blog key={index} title={blog.title} description={blog.description} />
+        ))}
     </div>
   );
 };
